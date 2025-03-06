@@ -8,6 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
+name = "Jarvis"
+
 # get the path to the ChromeDriver executable
 driver_path = ChromeDriverManager().install()
 
@@ -24,16 +26,14 @@ WebDriverWait(driver, 20).until(
     lambda driver: driver.execute_script('return document.readyState') == 'complete'
 )
 
+driver.find_element(By.CSS_SELECTOR, "#name").send_keys(name)
+# driver.find_element(By.CSS_SELECTOR, "#alertbtn").click()
+driver.find_element(By.CSS_SELECTOR, "#confirmbtn").click()
+alert = driver.switch_to.alert
+alertText = alert.text
+assert name in alertText
+# alert.accept()
+alert.dismiss()
 
-radio_buttons = driver.find_elements(By.XPATH, "//input[@type='radio']")
-print(len(radio_buttons))
-for radio_button in radio_buttons:
-    if radio_button.get_attribute("value") == 'radio2':
-        radio_button.click()
-        assert radio_button.is_selected()
-        break
-
-
-sleep(2)
 
 driver.quit()
