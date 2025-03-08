@@ -16,6 +16,8 @@ service = Service(driver_path)
 driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
+driver.implicitly_wait(5)
+
 # open the url
 driver.get('https://rahulshettyacademy.com/seleniumPractise/#/')
 
