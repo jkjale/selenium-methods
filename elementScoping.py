@@ -25,7 +25,7 @@ results = WebDriverWait(driver, 10).until(
     EC.visibility_of_all_elements_located((By.XPATH, "//div[@class='product']"))
 )
 for result in results:
-    result.find_element(By.XPATH, "div[3]/button").click()
+    result.find_element(By.XPATH, "./div[3]/button").click()
 
 driver.find_element(By.CSS_SELECTOR, '.cart-icon').click()
 
