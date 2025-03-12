@@ -9,27 +9,28 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--start-maximized') # this opens the browser at max size from the start
 chrome_options.add_argument('--headless') # run test without opening the browser
+chrome_options.add_argument('--ignore-certificate-errors') # able to bypass unsafe websites
 
 driver_path = ChromeDriverManager().install()
 service = Service(driver_path)
 
 driver = webdriver.Chrome(service=service, options=chrome_options)
-driver.maximize_window()
+# driver.maximize_window()
 
 # open the url
-driver.get('https://rahulshettyacademy.com/AutomationPractice/')
+driver.get('https://rahulshettyacademy.com/seleniumPractise/#/offers')
 
 # Wait for the page to load completely
 WebDriverWait(driver, 20).until(
     lambda driver: driver.execute_script('return document.readyState') == 'complete'
 )
 
-driver.execute_script('window.scrollBy(0, document.body.scrollHeight)')
+print(driver.title)
+print(driver.current_url)
 
-driver.get_screenshot_as_file('screenshot4.png')
 
 
-sleep(2)
 
 driver.quit()

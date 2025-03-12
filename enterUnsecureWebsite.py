@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--ignore-certificate-errors')
+chrome_options.add_argument('--ignore-certificate-errors') # able to bypass unsafe websites
 
 driver_path = ChromeDriverManager().install()
 service = Service(driver_path)
