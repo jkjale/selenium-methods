@@ -21,6 +21,7 @@ driver.get('https://rahulshettyacademy.com/upload-download-test/index.html')
 
 driver.find_element(By.ID, "downloadButton").click()
 
+# ensure the element has type='file' attribute
 file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
 file_path = '/Users/jakelee/Downloads/download (3).xlsx'
 file_input.send_keys(file_path)
