@@ -14,7 +14,7 @@ driver.wait = WebDriverWait(driver, timeout=10)
 
 driver.get('https://rahulshettyacademy.com/angularpractice/')
 
-driver.find_element(By.CSS_SELECTOR, "[href='/angularpractice/shop']")
+driver.find_element(By.CSS_SELECTOR, "[href='/angularpractice/shop']").click()
 
 checkout_btn = driver.find_element(By.CSS_SELECTOR, "#navbarResponsive a")
 checkout_btn_counter = checkout_btn.text
@@ -39,10 +39,19 @@ country_input.send_keys(country)
 
 country_dropdown_selection = (By.XPATH, "//a[text()='United States of America']")
 
-driver.wait.until(
+country_select = driver.wait.until(
     EC.element_to_be_clickable(country_dropdown_selection),
-        message=f'Element not clickable by {country_dropdown_selection}'
-    )
+    message=f'Element not clickable by {country_dropdown_selection}'
+)
+
+country_select.click()
+
+driver.find_element(By.CSS_SELECTOR, "[for='checkbox2']").click()
+
+driver.find_element(By.CSS_SELECTOR, "[value='Purchase']").click()
+
+driver.quit()
+
 
 
 
