@@ -50,6 +50,12 @@ driver.find_element(By.CSS_SELECTOR, "[for='checkbox2']").click()
 
 driver.find_element(By.CSS_SELECTOR, "[value='Purchase']").click()
 
+success_msg = driver.wait.until(
+    EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert.alert-success > strong")),
+)
+
+assert 'success!' in success_msg.text.strip().lower()
+
 driver.quit()
 
 
